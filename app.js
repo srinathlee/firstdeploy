@@ -2,7 +2,7 @@ const express=require("express");
 const app=express();
 const mysql=require("mysql");
 const DATABASE_URL='mysql://root:EgLAg7ByaBgWyPCoTuWb@containers-us-west-98.railway.app:7325/railway'
-const connection=mysql.createConnection({DATABASE_URL)
+const connection=mysql.createConnection(DATABASE_URL)
 const init_db_server=()=>{
     connection.connect((err)=>{
         if(err){
@@ -11,7 +11,7 @@ const init_db_server=()=>{
         }
         console.log("sql is clear")
     });
-    app.listen(process.env.PORT || 5820,()=>{console.log("app is started at port 3000")})
+    app.listen(process.env.PORT || 3000,()=>{console.log("app is started at port 3000")})
     
 }
 init_db_server();
