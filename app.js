@@ -1,42 +1,40 @@
-const express = require('express')
-const mysql = require('mysql')
-//const { ConnectionString } = require('connection-string');
-const { createPool } = require('mysql')
-const app = express()
+const express=require("express");
+const app=express();
+const mysql=require("mysql");
 
-
-const con = mysql.createConnection('mysql://root:sRK8ZYd8OYt7zl5pRHLO@containers-us-west-136.railway.app:5823/railway')
-
-// {
-//     host: 'containers-us-west-136.railway.app',
-//     port: 5823,
-//     user: 'root',
-//     password: 'sRK8ZYd8OYt7zl5pRHLO',
-//     database: 'railway',
-//     // url :'mysql://${{ MYSQLUSER }}:${{ MYSQLPASSWORD }}@${{ MYSQLHOST }}:${{ MYSQLPORT }}/${{ MYSQLDATABASE }}'
-// }
-const initializeDb = () => {
-    con.connect(function (err) {
-        if (err) throw err;
-        app.listen(process.env.port || 3000, () => {
-            console.log(`server running at ${process.env.port}`)
-        })
-    });
-}
-
-initializeDb()
-
-
-app.get('/', (req, res) => {
-    pool.query('select * from users;', (err, results) => {
-        if (err) {
-            console.log(err)
-            res.send(err);
-        } else {
-
-            res.status(200).json({ 'results': results });
-        }
-
-    });
-    res.send('hello world!!')
+const connection=mysql.createConnection({
+    host:"localhost",
+    user:"db_user",
+    password:"password",
+    database:"mysql://root:EgLAg7ByaBgWyPCoTuWb@containers-us-west-98.railway.app:7325/railway"
 })
+const init_db_server=()=>{
+    connection.connect((err)=>{
+        if(err){
+            console.log(`the error is ${err}`);
+            return;
+        }
+        console.log("sql is clear")
+    });
+    app.listen(process.env.PORT || 3000,()=>{console.log("app is started at port 3000")})
+    
+}
+init_db_server();
+
+
+app.get("/",(request,response)=>{
+    connection.query("select * from cricket_team",(error,result)=>{
+        if (error){
+            response.send(error)
+        }
+        response.send(result)
+    })
+    
+   // response.send("this is home page");
+})
+
+app.get("/about/",(request,response)=>{
+    response.send("this is about page");
+})
+
+
