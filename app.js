@@ -2,12 +2,7 @@ const express=require("express");
 const app=express();
 const mysql=require("mysql");
 
-const connection=mysql.createConnection({
-    host:"localhost",
-    user:"db_user",
-    password:"password",
-    database:"mysql://root:EgLAg7ByaBgWyPCoTuWb@containers-us-west-98.railway.app:7325/railway"
-})
+const connection=mysql.createConnection('mysql://root:EgLAg7ByaBgWyPCoTuWb@containers-us-west-98.railway.app:7325/railway')
 const init_db_server=()=>{
     connection.connect((err)=>{
         if(err){
