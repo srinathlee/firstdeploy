@@ -1,8 +1,8 @@
 const express=require("express");
 const app=express();
 const mysql=require("mysql");
-
-const connection=mysql.createConnection('mysql://root:EgLAg7ByaBgWyPCoTuWb@containers-us-west-98.railway.app:7325/railway')
+const db_url='mysql://root:EgLAg7ByaBgWyPCoTuWb@containers-us-west-98.railway.app:7325/railway'
+const connection=mysql.createConnection(db_url)
 const init_db_server=()=>{
     connection.connect((err)=>{
         if(err){
