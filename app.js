@@ -34,7 +34,13 @@ app.get("/",(request,response)=>{
 })
 
 app.get("/about/",(request,response)=>{
-    response.send("this is about page");
+
+    connection.query("select * from cricket_team;",(error,result)=>{
+        if (error){
+            response.send(error)
+        }
+        response.send(result)
+    })
 })
 
 
