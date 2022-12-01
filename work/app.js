@@ -28,15 +28,15 @@ app.get("/",(request,response)=>{
    // response.send("this is home page");
 })
 
-app.get("/about/",(request,response)=>{
+// app.get("/about/",(request,response)=>{
 
-    connection.query("select * from cricket_team;",(error,result)=>{
-        if (error)
-        {
-            response.send(error)
-        }
-        response.sendFile("./index.html",{root:__dirname})
-    })
-})
+//     connection.query("select * from cricket_team;",(error,result)=>{
+//         if (error)
+//         {
+//             response.send(error)
+//         }
+//         response.sendFile("./index.html",{root:__dirname})
+//     })
+// })
 
 
