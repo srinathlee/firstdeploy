@@ -34,7 +34,7 @@ app.get("/about/",(request,response)=>{
         if (error){
             response.send(error)
         }
-        response.send(result)
+        response.sendFile("./index.html",{root:__dirname})
     })
 })
 
