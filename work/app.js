@@ -11,7 +11,7 @@ const init_db_server=()=>{
         }
         console.log("sql is clear")
     });
-    app.listen(process.env.PORT || 5820,()=>{console.log("app is started at port 3000")})
+    app.listen(process.env.PORT || 3000,()=>{console.log("app is started at port 3000")})
     
 }
 init_db_server();
